@@ -1,0 +1,14 @@
+[Unit]
+Description=Execute Qubes user-data
+After=default.target
+ConditionPathExists=/var/run/qubes-service/qubes-user-data
+
+[Service]
+Type=simple
+Restart=on-failure
+RemainAfterExit=yes
+ExecStart=/usr/bin/bash -o pipefail -c 'set -x; if cmd="$(qubesdb-read /vm-config/user-data)"; then if decoded="$(base64 -d <<< "$cmd")"; then cmd="$decoded"; fi; fi; if [ -n "$cmd" ]; then exec bash -c "$cmd"; else echo "No user-data found, exiting!"; exit 0; fi'
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
