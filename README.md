@@ -28,6 +28,10 @@ base64-encoded input.
 8. Enjoy! Check the status of the script in your DispVM after launching via
    `sudo systemctl status qubes-user-data`
 
+## Other Utilities
+
+See [the qubes-utils repo](https://github.com/Atrate/qubes-utils) for links to other utilities I've written for Qubes.
+
 ## License
 This project is licensed under the [AGPL-3.0-or-later](https://www.gnu.org/licenses/agpl-3.0.html).
 
